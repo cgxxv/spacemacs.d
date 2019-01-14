@@ -32,7 +32,8 @@ values."
    dotspacemacs-configuration-layers
    '(
      ;;2: checkers
-     (spell-checking :variables spell-checking-enable-by-default nil
+     (spell-checking :variables
+                     spell-checking-enable-by-default nil
                      spell-checking-enable-auto-dictionary t
                      enable-flyspell-auto-completion t)
      syntax-checking
@@ -50,7 +51,6 @@ values."
      ;;12: Operating systems
      osx
      ;;15: spacemacs
-     spacemacs-ui-visual
      spacemacs-editing-visual
      spacemacs-editing
      spacemacs-ui
@@ -166,7 +166,7 @@ values."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner 'official
+   dotspacemacs-startup-banner 'random
    ;; List of items to show in startup buffer or an association list of
    ;; the form `(list-type . list-size)`. If nil then it is disabled.
    ;; Possible values for list-type are:
@@ -187,10 +187,10 @@ values."
                          ;;monokai
                          light-blue
                          ;;solarized-dark
-                         ;; sanityinc-solarized-dark
-                         ;; material
-                         ;; spacemacs-dark
-                         ;; spacemacs-light
+                         ;;sanityinc-solarized-dark
+                         ;;material
+                         ;;spacemacs-dark
+                         ;;spacemacs-light
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
