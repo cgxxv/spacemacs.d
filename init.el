@@ -80,7 +80,7 @@ values."
      javascript
      python
      php
-     go
+     (go :variables go-tab-width 2)
      clojure
      c-c++
      java
@@ -197,7 +197,6 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Fira Code Retina"
-                               ;;"Source Code Pro"
                                :size 13
                                :weight normal
                                :width normal
