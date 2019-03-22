@@ -37,14 +37,15 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      ivy
+     semantic
      (auto-completion :variables
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-sort-by-usage t)
-     ;; better-defaults
+     better-defaults
      emacs-lisp
      git
-     markdown
-     org
+     ;;markdown
+     ;;org
      (shell :variables
              shell-default-height 30
              shell-default-position 'bottom)
@@ -59,7 +60,7 @@ values."
                       version-control-diff-side 'left)
 
      ibuffer
-     emoji
+     ;;emoji
      imenu-list
 
      (gtags :variables
@@ -67,16 +68,18 @@ values."
 
      ;;programming language
      yaml
-     html
-     javascript
      python
-     php
-     (go :variables go-tab-width 2)
+     (go :variables
+         go-tab-width 2
+         gofmt-command "goimports")
      clojure
      c-c++
-     java
      sql
      shell-scripts
+     ;;html
+     ;;javascript
+     ;;php
+     ;;java
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -293,7 +296,7 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -338,7 +341,6 @@ before packages are loaded. If you are unsure, you should try in setting them in
       '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
         ("org-cn"   . "http://elpa.emacs-china.org/org/")
         ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
-  (setq gofmt-command "goimports")
   ;;(setq-default git-magit-status-fullscreen t)
   ;;(setq-default git-enable-magit-svn-plugin t)
   ;;(setq dired-dwin-target 1)
@@ -390,9 +392,10 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (yapfify yaml-mode xterm-color web-mode web-beautify tagedit sql-indent smeargle slim-mode shell-pop scss-mode sass-mode pyvenv pytest pyenv-mode py-isort pug-mode pip-requirements phpunit phpcbf php-extras php-auto-yasnippets orgit org-projectile org-category-capture org-present org-plus-contrib org-pomodoro alert log4e gntp org-mime org-download multi-term mmm-mode markdown-toc markdown-mode magit-gitflow livid-mode skewer-mode simple-httpd live-py-mode less-css-mode json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc insert-shebang imenu-list ibuffer-projectile hy-mode htmlize haml-mode go-guru go-eldoc gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md ggtags fuzzy flyspell-popup flyspell-correct-ivy flyspell-correct flycheck-pos-tip pos-tip flycheck fish-mode evil-magit magit magit-popup git-commit with-editor eshell-z eshell-prompt-extras esh-help emoji-cheat-sheet-plus emmet-mode drupal-mode php-mode disaster diff-hl cython-mode company-web web-completion-data company-tern dash-functional tern company-statistics company-shell company-go go-mode company-emoji company-emacs-eclim eclim company-c-headers company-anaconda company coffee-mode cmake-mode clojure-snippets clj-refactor inflections edn multiple-cursors paredit peg clang-format cider-eval-sexp-fu eval-sexp-fu highlight cider sesman seq spinner queue clojure-mode auto-yasnippet yasnippet auto-dictionary anaconda-mode pythonic f dash s ac-ispell auto-complete which-key wgrep use-package smex pcre2el macrostep ivy-hydra helm-make flx exec-path-from-shell evil-visualstar evil-escape elisp-slime-nav diminish counsel-projectile bind-map auto-compile ace-window))))
+    (stickyfunc-enhance srefactor yapfify yaml-mode xterm-color web-mode web-beautify tagedit sql-indent smeargle slim-mode shell-pop scss-mode sass-mode pyvenv pytest pyenv-mode py-isort pug-mode pip-requirements phpunit phpcbf php-extras php-auto-yasnippets orgit org-projectile org-category-capture org-present org-plus-contrib org-pomodoro alert log4e gntp org-mime org-download multi-term mmm-mode markdown-toc markdown-mode magit-gitflow livid-mode skewer-mode simple-httpd live-py-mode less-css-mode json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc insert-shebang imenu-list ibuffer-projectile hy-mode htmlize haml-mode go-guru go-eldoc gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md ggtags fuzzy flyspell-popup flyspell-correct-ivy flyspell-correct flycheck-pos-tip pos-tip flycheck fish-mode evil-magit magit magit-popup git-commit with-editor eshell-z eshell-prompt-extras esh-help emoji-cheat-sheet-plus emmet-mode drupal-mode php-mode disaster diff-hl cython-mode company-web web-completion-data company-tern dash-functional tern company-statistics company-shell company-go go-mode company-emoji company-emacs-eclim eclim company-c-headers company-anaconda company coffee-mode cmake-mode clojure-snippets clj-refactor inflections edn multiple-cursors paredit peg clang-format cider-eval-sexp-fu eval-sexp-fu highlight cider sesman seq spinner queue clojure-mode auto-yasnippet yasnippet auto-dictionary anaconda-mode pythonic f dash s ac-ispell auto-complete which-key wgrep use-package smex pcre2el macrostep ivy-hydra helm-make flx exec-path-from-shell evil-visualstar evil-escape elisp-slime-nav diminish counsel-projectile bind-map auto-compile ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
