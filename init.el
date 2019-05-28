@@ -10,7 +10,7 @@ values."
    ;; Base distribution to use. This is a layer contained in the directory
    ;; `+distribution'. For now available distributions are `spacemacs-base'
    ;; or `spacemacs'. (default 'spacemacs)
-   dotspacemacs-distribution 'spacemacs-base
+   dotspacemacs-distribution 'spacemacs
    ;; Lazy installation of layers (i.e. layers are installed only when a file
    ;; with a supported type is opened). Possible values are `all', `unused'
    ;; and `nil'. `unused' will lazy install only unused layers (i.e. layers
@@ -48,42 +48,25 @@ values."
                       auto-completion-enable-sort-by-usage t
                       :disabled-for markdown org)
 
-     (shell :variables
-             shell-default-height 30
-             shell-default-position 'bottom)
      git
-     (version-control :variables
-                      version-control-diff-tool 'diff-hl
-                      version-control-global-margin t
-                      version-control-diff-side 'left)
 
      semantic
      smex
-     ;;ivy
-     helm
+     ivy
+     ;;helm
      imenu-list
      ibuffer
-     (gtags :variables
-            gtags-enable-by-default t)
 
      osx
      better-defaults
-     spacemacs-base
-     spacemacs-editing-visual
-     spacemacs-editing
-     spacemacs-ui
-     spacemacs-ui-visual
-     spacemacs-evil
-
-     ;;emoji
-     ;;themes-megapack
-     ;;colors
 
      yaml
      python
      (go :variables
          go-tab-width 2
-         gofmt-command "goimports")
+         gofmt-command "goimports"
+         go-use-test-args "-race -timeout 10s"
+         godoc-at-point-function 'godoc-gogetdoc)
      clojure
      c-c++
      sql
@@ -173,6 +156,7 @@ values."
                          ;;material
                          ;;spacemacs-dark
                          ;;spacemacs-light
+                         dracula
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -346,13 +330,10 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  (setq configuration-layer--elpa-archives
-      '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
-        ("org-cn"   . "http://elpa.emacs-china.org/org/")
-        ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
-  ;;(setq-default git-magit-status-fullscreen t)
-  ;;(setq-default git-enable-magit-svn-plugin t)
-  ;;(setq dired-dwin-target 1)
+  (setq configuration-layer-elpa-archives
+        '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+          ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+          ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
   )
 
 (defun dotspacemacs/user-config ()
