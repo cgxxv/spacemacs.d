@@ -70,6 +70,7 @@ values."
      c-c++
      sql
      shell-scripts
+     rust
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -122,9 +123,9 @@ values."
    ;; with `:variables' keyword (similar to layers). Check the editing styles
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
-   dotspacemacs-editing-style 'emacs
+   dotspacemacs-editing-style 'hybrid
 
-   dotspacemacs-mode-line-theme 'vanilla
+   dotspacemacs-mode-line-theme 'all-the-icons
 
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
@@ -150,7 +151,7 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(;;cyberpunk
+   dotspacemacs-themes '(cyberpunk
                          ;;monokai
                          ;;light-blue
                          ;;solarized-dark
@@ -158,7 +159,8 @@ values."
                          ;;material
                          ;;spacemacs-dark
                          ;;spacemacs-light
-                         dracula
+                         ;;dracula
+                         ;;solarized
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -389,6 +391,8 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
  '(evil-want-Y-yank-to-eol nil)
@@ -411,7 +415,7 @@ This function is called at the very end of Spacemacs initialization."
      ("XXXX" . "#dc752f"))))
  '(package-selected-packages
    (quote
-    (unicode-fonts ucs-utils font-utils persistent-soft list-utils pcache memoize avy wgrep ivy-yasnippet ivy-xref ivy-rtags ivy-purpose ivy-hydra flyspell-correct-ivy yasnippet-snippets yapfify yaml-mode ws-butler writeroom-mode visual-fill-column winum volatile-highlights vi-tilde-fringe uuidgen unfill treemacs-projectile treemacs ht pfuture toc-org symon symbol-overlay string-inflection stickyfunc-enhance srefactor sql-indent spaceline-all-the-icons spaceline powerline smex smeargle restart-emacs rainbow-delimiters pytest pyenv-mode py-isort popwin pippel pipenv pyvenv pip-requirements persp-mode password-generator paradox org-bullets open-junk-file mwim move-text magit-svn magit-gitflow magit-popup lorem-ipsum live-py-mode link-hint insert-shebang indent-guide importmagic epc ctable concurrent deferred ibuffer-projectile hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose window-purpose imenu-list helm-projectile helm-mode-manager helm-make helm-gitignore request helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flyspell-popup flyspell-correct-helm flyspell-correct flycheck-rtags flycheck-pos-tip pos-tip flycheck-bashate flycheck flx-ido flx fish-mode fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-matchit evil-magit magit transient git-commit with-editor evil-lisp-state evil-lion evil-indent-plus evil-iedit-state iedit evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens smartparens paredit evil-args evil-anzu anzu editorconfig dumb-jump dracula-theme doom-modeline shrink-path counsel-projectile projectile counsel swiper ivy cider spinner queue org-plus-contrib evil which-key use-package sesman pkg-info pcre2el parseedn hydra goto-chg font-lock+ dotenv-mode disaster diminish devdocs define-word cython-mode cpp-auto-include company-statistics company-shell company-rtags company-go company-c-headers company-anaconda column-enforce-mode clojure-snippets clojure-mode clean-aindent-mode clang-format cider-eval-sexp-fu centered-cursor-mode blacken bind-map auto-yasnippet auto-highlight-symbol auto-dictionary all-the-icons aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell)))
+    (treemacs-evil toml-mode racer helm-gtags helm helm-core ggtags flycheck-rust counsel-gtags cargo markdown-mode rust-mode solarized-theme unicode-fonts ucs-utils font-utils persistent-soft list-utils pcache memoize avy wgrep ivy-yasnippet ivy-xref ivy-rtags ivy-purpose ivy-hydra flyspell-correct-ivy yasnippet-snippets yapfify yaml-mode ws-butler writeroom-mode visual-fill-column winum volatile-highlights vi-tilde-fringe uuidgen unfill treemacs-projectile treemacs ht pfuture toc-org symon symbol-overlay string-inflection stickyfunc-enhance srefactor sql-indent spaceline-all-the-icons spaceline powerline smex smeargle restart-emacs rainbow-delimiters pytest pyenv-mode py-isort popwin pippel pipenv pyvenv pip-requirements persp-mode password-generator paradox org-bullets open-junk-file mwim move-text magit-svn magit-gitflow magit-popup lorem-ipsum live-py-mode link-hint insert-shebang indent-guide importmagic epc ctable concurrent deferred ibuffer-projectile hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose window-purpose imenu-list helm-projectile helm-mode-manager helm-make helm-gitignore request helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flyspell-popup flyspell-correct-helm flyspell-correct flycheck-rtags flycheck-pos-tip pos-tip flycheck-bashate flycheck flx-ido flx fish-mode fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-matchit evil-magit magit transient git-commit with-editor evil-lisp-state evil-lion evil-indent-plus evil-iedit-state iedit evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens smartparens paredit evil-args evil-anzu anzu editorconfig dumb-jump dracula-theme doom-modeline shrink-path counsel-projectile projectile counsel swiper ivy cider spinner queue org-plus-contrib evil which-key use-package sesman pkg-info pcre2el parseedn hydra goto-chg font-lock+ dotenv-mode disaster diminish devdocs define-word cython-mode cpp-auto-include company-statistics company-shell company-rtags company-go company-c-headers company-anaconda column-enforce-mode clojure-snippets clojure-mode clean-aindent-mode clang-format cider-eval-sexp-fu centered-cursor-mode blacken bind-map auto-yasnippet auto-highlight-symbol auto-dictionary all-the-icons aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell)))
  '(pdf-view-midnight-colors (quote ("#b2b2b2" . "#292b2e"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
