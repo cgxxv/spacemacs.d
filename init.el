@@ -48,8 +48,29 @@ values."
                       auto-completion-enable-sort-by-usage t
                       :disabled-for markdown org)
 
-     git
+     (unicode-fonts :variables unicode-fonts-force-multi-color-on-mac t)
 
+     osx
+     better-defaults
+     gtags
+
+     (ranger :variables
+             ranger-show-preview t
+             ;; ranger-enter-with-minus t
+             ;; ranger-cleanup-on-disable nil
+             ;; ranger-cleanup-eagerly nil
+             ;; ranger-show-hidden t
+             ;; ranger-header-func 'ranger-header-line
+             ;; ranger-parent-header-func 'ranger-parent-header-line
+             ;; ranger-parent-depth 2
+             ;; ranger-width-parents 0.12
+             ;; ranger-max-parent-width 0.12
+             ;; ranger-show-literal t
+             ;; ranger-width-preview 0.55
+             ranger-ignored-extensions '("mkv" "iso" "mp4")
+             ;; ranger-max-prefiew-size 10
+             )
+     git
      semantic
      smex
      ivy
@@ -57,22 +78,24 @@ values."
      imenu-list
      ibuffer
 
-     osx
-     better-defaults
-
-     gtags
+     lsp
 
      yaml
      python
      (go :variables
+         go-use-golangci-lint t
          go-tab-width 2
          gofmt-command "goimports"
          go-use-test-args "-race -timeout 10s"
-         godoc-at-point-function 'godoc-gogetdoc)
+         godoc-at-point-function 'godoc-gogetdoc
+         go-backend 'lsp)
      clojure
      c-c++
      sql
      shell-scripts
+     rust
+     javascript
+     php
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -127,6 +150,9 @@ values."
    ;; (default 'vim)
    dotspacemacs-editing-style 'emacs
 
+   ;;dotspacemacs-mode-line-theme]] is 'spacemacs, 'all-the-icons, 'custom,
+   ;;'vim-powerline or 'vanilla or a list with `car' one of the previous values
+   ;;and properties one of the following: `:separator' or `:separator-scale'
    dotspacemacs-mode-line-theme 'spacemacs
 
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
@@ -153,7 +179,8 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(;;cyberpunk
+   dotspacemacs-themes '(
+                         cyberpunk
                          ;;monokai
                          ;;light-blue
                          ;;solarized-dark
@@ -161,7 +188,7 @@ values."
                          ;;material
                          ;;spacemacs-dark
                          ;;spacemacs-light
-                         dracula
+                         ;;dracula
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -262,7 +289,7 @@ values."
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -325,7 +352,7 @@ values."
    ;; `trailing' to delete only the whitespace at end of lines, `changed'to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-whitespace-cleanup 'all
    ))
 
 (defun dotspacemacs/user-init ()
@@ -349,6 +376,10 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq make-backup-files nil)
+  (setq go-format-before-save t)
+  (setq projectile-enable-caching t)
+  (setq powerline-image-apple-rgb t)
+  (setq line-spacing 1.5)
   (defun copy-to-clipboard ()
     "Copies selection to x-clipboard."
     (interactive)
@@ -378,25 +409,13 @@ you should place your code here."
     )
   (evil-leader/set-key "o c" 'copy-to-clipboard)
   (evil-leader/set-key "o v" 'paste-from-clipboard)
+
+  (evil-leader/set-key "o b" 'evil-jump-backward)
+  (evil-leader/set-key "o f" 'evil-jump-forward)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(evil-want-Y-yank-to-eol nil)
- '(package-selected-packages
-   (quote
-    (unfill mwim stickyfunc-enhance srefactor yapfify yaml-mode xterm-color web-mode web-beautify tagedit sql-indent smeargle slim-mode shell-pop scss-mode sass-mode pyvenv pytest pyenv-mode py-isort pug-mode pip-requirements phpunit phpcbf php-extras php-auto-yasnippets orgit org-projectile org-category-capture org-present org-plus-contrib org-pomodoro alert log4e gntp org-mime org-download multi-term mmm-mode markdown-toc markdown-mode magit-gitflow livid-mode skewer-mode simple-httpd live-py-mode less-css-mode json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc insert-shebang imenu-list ibuffer-projectile hy-mode htmlize haml-mode go-guru go-eldoc gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md ggtags fuzzy flyspell-popup flyspell-correct-ivy flyspell-correct flycheck-pos-tip pos-tip flycheck fish-mode evil-magit magit magit-popup git-commit with-editor eshell-z eshell-prompt-extras esh-help emoji-cheat-sheet-plus emmet-mode drupal-mode php-mode disaster diff-hl cython-mode company-web web-completion-data company-tern dash-functional tern company-statistics company-shell company-go go-mode company-emoji company-emacs-eclim eclim company-c-headers company-anaconda company coffee-mode cmake-mode clojure-snippets clj-refactor inflections edn multiple-cursors paredit peg clang-format cider-eval-sexp-fu eval-sexp-fu highlight cider sesman seq spinner queue clojure-mode auto-yasnippet yasnippet auto-dictionary anaconda-mode pythonic f dash s ac-ispell auto-complete which-key wgrep use-package smex pcre2el macrostep ivy-hydra helm-make flx exec-path-from-shell evil-visualstar evil-escape elisp-slime-nav diminish counsel-projectile bind-map auto-compile ace-window))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
 This is an auto-generated function, do not modify its content directly, use
@@ -408,9 +427,27 @@ This function is called at the very end of Spacemacs initialization."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(evil-want-Y-yank-to-eol nil)
+ '(hl-todo-keyword-faces
+   (quote
+    (("TODO" . "#dc752f")
+     ("NEXT" . "#dc752f")
+     ("THEM" . "#2aa198")
+     ("PROG" . "#268bd2")
+     ("OKAY" . "#268bd2")
+     ("DONT" . "#d70000")
+     ("FAIL" . "#d70000")
+     ("DONE" . "#86dc2f")
+     ("NOTE" . "#875f00")
+     ("KLUDGE" . "#875f00")
+     ("HACK" . "#875f00")
+     ("TEMP" . "#875f00")
+     ("FIXME" . "#dc752f")
+     ("XXX" . "#dc752f")
+     ("XXXX" . "#dc752f"))))
  '(package-selected-packages
    (quote
-    (counsel-gtags unfill mwim stickyfunc-enhance srefactor yapfify yaml-mode xterm-color web-mode web-beautify tagedit sql-indent smeargle slim-mode shell-pop scss-mode sass-mode pyvenv pytest pyenv-mode py-isort pug-mode pip-requirements phpunit phpcbf php-extras php-auto-yasnippets orgit org-projectile org-category-capture org-present org-plus-contrib org-pomodoro alert log4e gntp org-mime org-download multi-term mmm-mode markdown-toc markdown-mode magit-gitflow livid-mode skewer-mode simple-httpd live-py-mode less-css-mode json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc insert-shebang imenu-list ibuffer-projectile hy-mode htmlize haml-mode go-guru go-eldoc gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md ggtags fuzzy flyspell-popup flyspell-correct-ivy flyspell-correct flycheck-pos-tip pos-tip flycheck fish-mode evil-magit magit magit-popup git-commit with-editor eshell-z eshell-prompt-extras esh-help emoji-cheat-sheet-plus emmet-mode drupal-mode php-mode disaster diff-hl cython-mode company-web web-completion-data company-tern dash-functional tern company-statistics company-shell company-go go-mode company-emoji company-emacs-eclim eclim company-c-headers company-anaconda company coffee-mode cmake-mode clojure-snippets clj-refactor inflections edn multiple-cursors paredit peg clang-format cider-eval-sexp-fu eval-sexp-fu highlight cider sesman seq spinner queue clojure-mode auto-yasnippet yasnippet auto-dictionary anaconda-mode pythonic f dash s ac-ispell auto-complete which-key wgrep use-package smex pcre2el macrostep ivy-hydra helm-make flx exec-path-from-shell evil-visualstar evil-escape elisp-slime-nav diminish counsel-projectile bind-map auto-compile ace-window))))
+    (lsp-ui lsp-treemacs helm-lsp cquery company-lsp ccls lsp-mode cyberpunk-theme phpunit phpcbf php-extras php-auto-yasnippets helm-gtags helm drupal-mode company-php ac-php-core xcscope php-mode treemacs-evil web-beautify tern prettier-js skewer-mode multiple-cursors js2-mode js-doc grizzl simple-httpd helm-core add-node-modules-path ggtags counsel-gtags yasnippet-snippets yapfify yaml-mode ws-butler writeroom-mode winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package unicode-fonts unfill treemacs-projectile toml-mode toc-org symon symbol-overlay string-inflection stickyfunc-enhance srefactor sql-indent spaceline-all-the-icons smex smeargle reveal-in-osx-finder restart-emacs request rainbow-delimiters racer pytest pyenv-mode py-isort popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox osx-trash osx-dictionary osx-clipboard org-plus-contrib org-bullets open-junk-file mwim move-text magit-svn magit-gitflow lorem-ipsum live-py-mode link-hint launchctl ivy-yasnippet ivy-xref ivy-rtags ivy-purpose ivy-hydra insert-shebang indent-guide importmagic ibuffer-projectile hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy font-lock+ flyspell-popup flyspell-correct-ivy flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-golangci-lint flycheck-bashate flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu editorconfig dumb-jump dracula-theme dotenv-mode doom-modeline disaster diminish devdocs cython-mode counsel-projectile company-statistics company-shell company-rtags company-go company-c-headers company-anaconda column-enforce-mode clojure-snippets clean-aindent-mode clang-format cider-eval-sexp-fu cider centered-cursor-mode cargo blacken auto-yasnippet auto-highlight-symbol auto-dictionary aggressive-indent ace-link ac-ispell)))
+ '(pdf-view-midnight-colors (quote ("#b2b2b2" . "#262626"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
