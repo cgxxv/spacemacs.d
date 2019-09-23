@@ -91,10 +91,10 @@ values."
      git
      semantic
      smex
-     ivy
+     (ivy :variables ivy-enable-advanced-buffer-information t)
      ;;helm
      imenu-list
-     ibuffer
+     (ibuffer :variables ibuffer-group-buffers-by 'projects)
 
      ;; dap
      lsp
@@ -114,7 +114,7 @@ values."
      yaml
      (python :variables
              python-backend 'lsp
-             python-lsp-server 'mspyls
+             python-lsp-server 'pyls
              python-formatter 'yapf
              python-format-on-save t
              python-fill-column 99
@@ -136,7 +136,10 @@ values."
             c-c++-enable-google-style t
             c-c++-enable-google-newline t
             c-c++-adopt-subprojects t)
-     clojure
+     (clojure :variables
+              clojure-enable-fancify-symbols t
+              clojure-enable-sayid t
+              clojure-enable-clj-refactor t)
      (sql :variables sql-capitalize-keywords t)
      shell-scripts
      rust
