@@ -125,7 +125,8 @@ values."
          gofmt-command "goimports"
          go-use-test-args "-race -timeout 10s"
          godoc-at-point-function 'godoc-gogetdoc
-         go-backend 'lsp)
+         go-backend 'lsp
+         )
      (c-c++ :variables
             c-c++-backend 'lsp-cquery
             c-c++-lsp-executable "/usr/local/bin/cquery"
@@ -145,6 +146,7 @@ values."
      rust
      javascript
      php
+     lua
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -229,21 +231,19 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         cyberpunk
+                         ;;dracula
+                         ;;cyberpunk
                          ;;monokai
                          ;;light-blue
-                         ;;solarized-dark
-                         ;;sanityinc-solarized-dark
-                         ;;material
                          ;;spacemacs-dark
                          ;;spacemacs-light
-                         ;;dracula
+                         sanityinc-solarized-dark
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Fira Code Retina"
+   dotspacemacs-default-font '("Menlo"
                                :size 16
                                :weight normal
                                :width normal
@@ -429,35 +429,6 @@ you should place your code here."
   (setq projectile-enable-caching t)
   (setq powerline-image-apple-rgb t)
   (setq line-spacing 1.5)
-  (defun copy-to-clipboard ()
-    "Copies selection to x-clipboard."
-    (interactive)
-    (if (display-graphic-p)
-        (progn
-          (message "Yanked region to x-clipboard!")
-          (call-interactively 'clipboard-kill-ring-save)
-          )
-      (if (region-active-p)
-          (progn
-            (shell-command-on-region (region-beginning) (region-end) "pbcopy")
-            (message "Yanked region to clipboard!")
-            (deactivate-mark))
-        (message "No region active; can't yank to clipboard!")))
-    )
-
-  (defun paste-from-clipboard ()
-    "Pastes from x-clipboard."
-    (interactive)
-    (if (display-graphic-p)
-        (progn
-          (clipboard-yank)
-          (message "graphics active")
-          )
-      (insert (shell-command-to-string "pbpaste"))
-      )
-    )
-  (evil-leader/set-key "o c" 'copy-to-clipboard)
-  (evil-leader/set-key "o v" 'paste-from-clipboard)
 
   (evil-leader/set-key "o b" 'evil-jump-backward)
   (evil-leader/set-key "o f" 'evil-jump-forward)
@@ -495,16 +466,13 @@ This function is called at the very end of Spacemacs initialization."
      ("XXXX" . "#dc752f"))))
  '(package-selected-packages
    (quote
-    (lsp-python-ms python dap-mode bui tree-mode lsp-ui lsp-treemacs helm-lsp cquery company-lsp ccls lsp-mode cyberpunk-theme phpunit phpcbf php-extras php-auto-yasnippets helm-gtags helm drupal-mode company-php ac-php-core xcscope php-mode treemacs-evil web-beautify tern prettier-js skewer-mode multiple-cursors js2-mode js-doc grizzl simple-httpd helm-core add-node-modules-path ggtags counsel-gtags yasnippet-snippets yapfify yaml-mode ws-butler writeroom-mode winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package unicode-fonts unfill treemacs-projectile toml-mode toc-org symon symbol-overlay string-inflection stickyfunc-enhance srefactor sql-indent spaceline-all-the-icons smex smeargle reveal-in-osx-finder restart-emacs request rainbow-delimiters racer pytest pyenv-mode py-isort popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox osx-trash osx-dictionary osx-clipboard org-plus-contrib org-bullets open-junk-file mwim move-text magit-svn magit-gitflow lorem-ipsum live-py-mode link-hint launchctl ivy-yasnippet ivy-xref ivy-rtags ivy-purpose ivy-hydra insert-shebang indent-guide importmagic ibuffer-projectile hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy font-lock+ flyspell-popup flyspell-correct-ivy flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-golangci-lint flycheck-bashate flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu editorconfig dumb-jump dracula-theme dotenv-mode doom-modeline disaster diminish devdocs cython-mode counsel-projectile company-statistics company-shell company-rtags company-go company-c-headers company-anaconda column-enforce-mode clojure-snippets clean-aindent-mode clang-format cider-eval-sexp-fu cider centered-cursor-mode cargo blacken auto-yasnippet auto-highlight-symbol auto-dictionary aggressive-indent ace-link ac-ispell)))
+    (company-lua lua-mode color-theme-sanityinc-solarized lsp-python-ms python dap-mode bui tree-mode lsp-ui lsp-treemacs helm-lsp cquery company-lsp ccls lsp-mode cyberpunk-theme phpunit phpcbf php-extras php-auto-yasnippets helm-gtags helm drupal-mode company-php ac-php-core xcscope php-mode treemacs-evil web-beautify tern prettier-js skewer-mode multiple-cursors js2-mode js-doc grizzl simple-httpd helm-core add-node-modules-path ggtags counsel-gtags yasnippet-snippets yapfify yaml-mode ws-butler writeroom-mode winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package unicode-fonts unfill treemacs-projectile toml-mode toc-org symon symbol-overlay string-inflection stickyfunc-enhance srefactor sql-indent spaceline-all-the-icons smex smeargle reveal-in-osx-finder restart-emacs request rainbow-delimiters racer pytest pyenv-mode py-isort popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox osx-trash osx-dictionary osx-clipboard org-plus-contrib org-bullets open-junk-file mwim move-text magit-svn magit-gitflow lorem-ipsum live-py-mode link-hint launchctl ivy-yasnippet ivy-xref ivy-rtags ivy-purpose ivy-hydra insert-shebang indent-guide importmagic ibuffer-projectile hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy font-lock+ flyspell-popup flyspell-correct-ivy flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-golangci-lint flycheck-bashate flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu editorconfig dumb-jump dracula-theme dotenv-mode doom-modeline disaster diminish devdocs cython-mode counsel-projectile company-statistics company-shell company-rtags company-go company-c-headers company-anaconda column-enforce-mode clojure-snippets clean-aindent-mode clang-format cider-eval-sexp-fu cider centered-cursor-mode cargo blacken auto-yasnippet auto-highlight-symbol auto-dictionary aggressive-indent ace-link ac-ispell)))
  '(pdf-view-midnight-colors (quote ("#b2b2b2" . "#262626"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(company-tooltip-common
-   ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection
-   ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
- )
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
 )
