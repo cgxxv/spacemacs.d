@@ -130,6 +130,7 @@ values."
      (c-c++ :variables
             c-c++-backend 'lsp-cquery
             c-c++-lsp-executable "/usr/local/bin/cquery"
+            c-c++-lsp-sem-highlight-method t
             c-c++-lsp-sem-highlight-rainbow t
             c++-enable-organize-includes-on-save t
             ;; c-c++-enable-clang-support t
@@ -429,6 +430,7 @@ you should place your code here."
   (setq projectile-enable-caching t)
   (setq powerline-image-apple-rgb t)
   (setq line-spacing 1.5)
+  (setq-default sp-escape-quotes-after-insert nil)
 
   (evil-leader/set-key "o b" 'evil-jump-backward)
   (evil-leader/set-key "o f" 'evil-jump-forward)
