@@ -434,6 +434,11 @@ you should place your code here."
 
   (evil-leader/set-key "o b" 'evil-jump-backward)
   (evil-leader/set-key "o f" 'evil-jump-forward)
+
+  (spaceline-define-segment buffer-id
+    (if (buffer-file-name)
+        (abbreviate-file-name (buffer-file-name))
+      (powerline-buffer-id)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
