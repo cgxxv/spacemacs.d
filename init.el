@@ -120,9 +120,9 @@ values."
              python-fill-column 99
              python-sort-imports-on-save t)
      (go :variables
-         go-use-golangci-lint t
          go-tab-width 2
          gofmt-command "goimports"
+         go-use-golangci-lint t
          go-use-test-args "-race -timeout 10s"
          godoc-at-point-function 'godoc-gogetdoc
          go-backend 'lsp
@@ -443,43 +443,3 @@ you should place your code here."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
-(defun dotspacemacs/emacs-custom-settings ()
-  "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(evil-want-Y-yank-to-eol nil)
- '(hl-todo-keyword-faces
-   (quote
-    (("TODO" . "#dc752f")
-     ("NEXT" . "#dc752f")
-     ("THEM" . "#2aa198")
-     ("PROG" . "#268bd2")
-     ("OKAY" . "#268bd2")
-     ("DONT" . "#d70000")
-     ("FAIL" . "#d70000")
-     ("DONE" . "#86dc2f")
-     ("NOTE" . "#875f00")
-     ("KLUDGE" . "#875f00")
-     ("HACK" . "#875f00")
-     ("TEMP" . "#875f00")
-     ("FIXME" . "#dc752f")
-     ("XXX" . "#dc752f")
-     ("XXXX" . "#dc752f"))))
- '(package-selected-packages
-   (quote
-    (company-lua lua-mode color-theme-sanityinc-solarized lsp-python-ms python dap-mode bui tree-mode lsp-ui lsp-treemacs helm-lsp cquery company-lsp ccls lsp-mode cyberpunk-theme phpunit phpcbf php-extras php-auto-yasnippets helm-gtags helm drupal-mode company-php ac-php-core xcscope php-mode treemacs-evil web-beautify tern prettier-js skewer-mode multiple-cursors js2-mode js-doc grizzl simple-httpd helm-core add-node-modules-path ggtags counsel-gtags yasnippet-snippets yapfify yaml-mode ws-butler writeroom-mode winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package unicode-fonts unfill treemacs-projectile toml-mode toc-org symon symbol-overlay string-inflection stickyfunc-enhance srefactor sql-indent spaceline-all-the-icons smex smeargle reveal-in-osx-finder restart-emacs request rainbow-delimiters racer pytest pyenv-mode py-isort popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox osx-trash osx-dictionary osx-clipboard org-plus-contrib org-bullets open-junk-file mwim move-text magit-svn magit-gitflow lorem-ipsum live-py-mode link-hint launchctl ivy-yasnippet ivy-xref ivy-rtags ivy-purpose ivy-hydra insert-shebang indent-guide importmagic ibuffer-projectile hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy font-lock+ flyspell-popup flyspell-correct-ivy flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-golangci-lint flycheck-bashate flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu editorconfig dumb-jump dracula-theme dotenv-mode doom-modeline disaster diminish devdocs cython-mode counsel-projectile company-statistics company-shell company-rtags company-go company-c-headers company-anaconda column-enforce-mode clojure-snippets clean-aindent-mode clang-format cider-eval-sexp-fu cider centered-cursor-mode cargo blacken auto-yasnippet auto-highlight-symbol auto-dictionary aggressive-indent ace-link ac-ispell)))
- '(pdf-view-midnight-colors (quote ("#b2b2b2" . "#262626"))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
-)
