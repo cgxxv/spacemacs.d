@@ -460,25 +460,3 @@ you should place your code here."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
-;; ##BEGIN
-(defun dotspacemacs/emacs-custom-settings ()
-  "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (xkcd typit mmt sudoku selectric-mode pacmacs emojify emoji-cheat-sheet-plus helm helm-core company-emoji 2048-game yapfify toml-mode sqlup-mode sql-indent sayid racer pytest pyenv-mode py-isort pippel pipenv pyvenv pip-requirements phpunit phpcbf php-extras php-auto-yasnippets nodejs-repl lsp-python-ms livid-mode skewer-mode simple-httpd live-py-mode js2-refactor js2-mode js-doc ivy-rtags insert-shebang importmagic epc ctable concurrent google-c-style geben flycheck-ycmd flycheck-rust flycheck-rtags flycheck-golangci-lint flycheck-bashate fish-mode drupal-mode disaster cython-mode cquery cpp-auto-include company-ycmd ycmd request-deferred deferred company-shell company-rtags rtags company-phpactor phpactor composer php-runtime company-php ac-php-core xcscope php-mode company-lua lua-mode company-c-headers company-anaconda clojure-snippets clj-refactor inflections multiple-cursors clang-format cider-eval-sexp-fu cider sesman queue parseedn clojure-mode parseclj a ccls cargo rust-mode blacken anaconda-mode pythonic yasnippet-snippets yaml-mode xterm-color ws-butler writeroom-mode winum which-key wgrep web-beautify vterm volatile-highlights vi-tilde-fringe uuidgen use-package unicode-fonts unfill treemacs-projectile treemacs-persp treemacs-magit toc-org terminal-here symon symbol-overlay string-inflection stickyfunc-enhance srefactor spaceline-all-the-icons smex smeargle shell-pop reveal-in-osx-finder restart-emacs request ranger rainbow-delimiters prettier-js popwin pcre2el password-generator paradox osx-trash osx-dictionary osx-clipboard org-plus-contrib org-bullets open-junk-file mwim multi-term move-text magit-svn magit-section magit-gitflow lsp-ui lorem-ipsum link-hint launchctl json-navigator json-mode ivy-yasnippet ivy-xref ivy-rich ivy-purpose ivy-hydra indent-guide ibuffer-projectile hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make google-translate golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link ggtags fuzzy font-lock+ flyspell-popup flyspell-correct-ivy flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help editorconfig dumb-jump dotenv-mode diminish devdocs dap-mode counsel-projectile counsel-gtags company-tern company-statistics company-quickhelp company-lsp company-go column-enforce-mode color-theme-sanityinc-solarized clean-aindent-mode centered-cursor-mode auto-yasnippet auto-highlight-symbol auto-dictionary aggressive-indent ace-link ac-ispell))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-)
-;; ##END
