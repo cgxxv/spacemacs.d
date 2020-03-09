@@ -41,6 +41,10 @@ values."
               ;; chinese-enable-fcitx t
               chinese-enable-youdao-dict t)
      quickurl
+     (xclipboard :variables
+                 xclipboard-enable-cliphist t
+                 xclipboard-copy-command "pbcopy"
+                 xclipboard-paste-command "pbpaste")
 
      ;;fun
      emoji
