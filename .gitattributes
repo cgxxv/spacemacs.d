@@ -1,0 +1,3 @@
+init.el filter=ignoreline
+#git config filter.ignoreline.clean "sed '/;;IGNORELINE_BEGIN/,/;;IGNORELINE_END$/d'"
+#git config filter.ignoreline.smudge "sed '/;;IGNORELINE_BEGIN/,/;;IGNORELINE_END$/d'"
