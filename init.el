@@ -36,28 +36,21 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     (chinese :variables
-              chinese-conv-backend "cconv"
-              ;; chinese-enable-fcitx t
-              chinese-enable-youdao-dict t)
-     quickurl
+     ;; (chinese :variables
+     ;;          chinese-conv-backend "cconv"
+     ;;          ;; chinese-enable-fcitx t
+     ;;          chinese-enable-youdao-dict t)
+     ;; quickurl
      (xclipboard :variables
                  xclipboard-enable-cliphist t
                  xclipboard-copy-command "pbcopy"
                  xclipboard-paste-command "pbpaste")
 
-     ;;fun
-     emoji
-     games
-     xkcd
-     selectric
-
-
      ;;2: checkers
-     (spell-checking :variables
-                     spell-checking-enable-by-default nil
-                     spell-checking-enable-auto-dictionary t
-                     enable-flyspell-auto-completion t)
+     ;; (spell-checking :variables
+     ;;                 spell-checking-enable-by-default nil
+     ;;                 spell-checking-enable-auto-dictionary t
+     ;;                 enable-flyspell-auto-completion t)
      syntax-checking
      ;;3: completion
      (auto-completion :variables
@@ -71,43 +64,44 @@ values."
                       auto-completion-enable-help-tooltip 'manual
                       auto-completion-enable-sort-by-usage t
                       spacemacs-default-company-backends '(company-files company-capf))
-     (unicode-fonts :variables
-                    unicode-fonts-force-multi-color-on-mac t)
-     (osx :variables
-          osx-command-as       'hyper
-          osx-option-as        'meta
-          osx-control-as       'control
-          osx-function-as      nil
-          osx-right-command-as 'left
-          osx-right-option-as  'left
-          osx-right-control-as 'left
-          osx-swap-option-and-command nil
-          osx-dictionary-dictionary-choice "English")
+     ;; (unicode-fonts :variables
+     ;;                unicode-fonts-force-multi-color-on-mac t)
+     ;; (osx :variables
+     ;;      osx-command-as       'hyper
+     ;;      osx-option-as        'meta
+     ;;      osx-control-as       'control
+     ;;      osx-function-as      nil
+     ;;      osx-right-command-as 'left
+     ;;      osx-right-option-as  'left
+     ;;      osx-right-control-as 'left
+     ;;      osx-swap-option-and-command nil
+     ;;      osx-dictionary-dictionary-choice "English")
      (better-defaults :variables
                       better-defaults-move-to-beginning-of-code-first t
                       better-defaults-move-to-end-of-code-first nil)
-     (gtags :variables
-            gtags-enable-by-default t)
+     ;; (gtags :variables
+     ;;        gtags-enable-by-default t)
 
-     (ranger :variables
-             ranger-show-preview t
-             ;; ranger-enter-with-minus t
-             ;; ranger-cleanup-on-disable nil
-             ;; ranger-cleanup-eagerly nil
-             ;; ranger-show-hidden t
-             ;; ranger-header-func 'ranger-header-line
-             ;; ranger-parent-header-func 'ranger-parent-header-line
-             ;; ranger-parent-depth 2
-             ;; ranger-width-parents 0.12
-             ;; ranger-max-parent-width 0.12
-             ;; ranger-show-literal t
-             ;; ranger-width-preview 0.55
-             ranger-ignored-extensions '("mkv" "iso" "mp4")
-             ;; ranger-max-prefiew-size 10
-             )
+
+     ;; (ranger :variables
+     ;;         ranger-show-preview t
+     ;;         ;; ranger-enter-with-minus t
+     ;;         ;; ranger-cleanup-on-disable nil
+     ;;         ;; ranger-cleanup-eagerly nil
+     ;;         ;; ranger-show-hidden t
+     ;;         ;; ranger-header-func 'ranger-header-line
+     ;;         ;; ranger-parent-header-func 'ranger-parent-header-line
+     ;;         ;; ranger-parent-depth 2
+     ;;         ;; ranger-width-parents 0.12
+     ;;         ;; ranger-max-parent-width 0.12
+     ;;         ;; ranger-show-literal t
+     ;;         ;; ranger-width-preview 0.55
+     ;;         ranger-ignored-extensions '("mkv" "iso" "mp4")
+     ;;         ;; ranger-max-prefiew-size 10
+     ;;         )
      git
-     semantic
-     smex
+     ;; semantic
+     ;; smex
      (ivy :variables ivy-enable-advanced-buffer-information t)
      ;;helm
      imenu-list
@@ -116,17 +110,17 @@ values."
      ;; dap
      lsp
 
-     (shell :variables
-            shell-default-shell 'eshell
-            shell-default-position 'bottom
-            shell-default-height 30
-            shell-default-width 40
-            shell-default-term-shell "/bin/bash"
-            multi-term-program "/bin/bash"
-            shell-default-full-span nil
-            shell-enable-smart-eshell t
-            shell-protect-eshell-prompt nil
-            close-window-with-terminal t)
+     ;; (shell :variables
+     ;;        shell-default-shell 'eshell
+     ;;        shell-default-position 'bottom
+     ;;        shell-default-height 30
+     ;;        shell-default-width 40
+     ;;        shell-default-term-shell "/bin/bash"
+     ;;        multi-term-program "/bin/bash"
+     ;;        shell-default-full-span nil
+     ;;        shell-enable-smart-eshell t
+     ;;        shell-protect-eshell-prompt nil
+     ;;        close-window-with-terminal t)
 
      yaml
      (python :variables
@@ -161,10 +155,11 @@ values."
               clojure-enable-clj-refactor t)
      (sql :variables sql-capitalize-keywords t)
      shell-scripts
-     rust
-     javascript
+     ;; rust
+     ;; javascript
      php
      lua
+     vimscript
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -210,7 +205,7 @@ values."
    ;; If non-nil, a form that evaluates to a package directory. For example, to
    ;; use different package directories for different Emacs versions, set this
    ;; to `emacs-version'.
-   dotspacemacs-elpa-subdirectory nil
+   dotspacemacs-elpa-subdirectory 'emacs-version
    ;; One of `vim', `emacs' or `hybrid'.
    ;; `hybrid' is like `vim' except that `insert state' is replaced by the
    ;; `hybrid state' with `emacs' key bindings. The value can also be a list
@@ -255,7 +250,9 @@ values."
                          ;;light-blue
                          ;;spacemacs-dark
                          ;;spacemacs-light
-                         sanityinc-solarized-dark
+                         ;; solarized-dark
+                         solarized-dark-high-contrast
+                         ;;sanityinc-solarized-dark
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -326,7 +323,7 @@ values."
    dotspacemacs-helm-no-header nil
    ;; define the position to display `helm', options are `bottom', `top',
    ;; `left', or `right'. (default 'bottom)
-   dotspacemacs-helm-position 'bottom
+   dotspacemacs-helm-position 'right
    ;; Controls fuzzy matching in helm. If set to `always', force fuzzy matching
    ;; in all non-asynchronous sources. If set to `source', preserve individual
    ;; source settings. Else, disable fuzzy matching in all sources.
@@ -337,7 +334,7 @@ values."
    dotspacemacs-enable-paste-transient-state nil
    ;; Which-key delay in seconds. The which-key buffer is the popup listing
    ;; the commands bound to the current keystroke sequence. (default 0.4)
-   dotspacemacs-which-key-delay 0.4
+   dotspacemacs-which-key-delay 1.0
    ;; Which-key frame position. Possible values are `right', `bottom' and
    ;; `right-then-bottom'. right-then-bottom tries to display the frame to the
    ;; right; if there is insufficient space it displays it at the bottom.
@@ -460,6 +457,23 @@ you should place your code here."
     (if (buffer-file-name)
         (abbreviate-file-name (buffer-file-name))
       (powerline-buffer-id)))
+
+  ;; (defun insert-line-below ()
+  ;;   "Insert an empty line below the current line."
+  ;;   (interactive)
+  ;;   (save-excursion
+  ;;     (end-of-line)
+  ;;     (open-line 1)))
+
+  ;; (defun insert-line-above ()
+  ;;   "Insert an empty line above the current line."
+  ;;   (interactive)
+  ;;   (save-excursion
+  ;;     (end-of-line 0)
+  ;;     (open-line 1)))
+
+  ;; (evil-leader/set-key "o o" 'insert-line-below)
+  ;; (evil-leader/set-key "o O" 'insert-line-above)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
