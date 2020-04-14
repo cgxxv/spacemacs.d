@@ -102,8 +102,13 @@ values."
      git
      ;; semantic
      ;; smex
-     (ivy :variables ivy-enable-advanced-buffer-information t)
-     ;;helm
+     ;; (ivy :variables ivy-enable-advanced-buffer-information t)
+     (helm :variables
+           helm-enable-auto-resize nil
+           helm-no-header t
+           helm-use-fuzzy 'always
+           helm-position 'bottom
+           spacemacs-helm-rg-max-column-number 256)
      imenu-list
      (ibuffer :variables ibuffer-group-buffers-by 'projects)
 
@@ -160,6 +165,7 @@ values."
      php
      lua
      vimscript
+     rust
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -212,7 +218,7 @@ values."
    ;; with `:variables' keyword (similar to layers). Check the editing styles
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
-   dotspacemacs-editing-style 'emacs
+   dotspacemacs-editing-style 'hybrid
 
    ;;dotspacemacs-mode-line-theme]] is 'spacemacs, 'all-the-icons, 'custom,
    ;;'vim-powerline or 'vanilla or a list with `car' one of the previous values
@@ -453,10 +459,10 @@ you should place your code here."
   (evil-leader/set-key "o b" 'evil-jump-backward)
   (evil-leader/set-key "o f" 'evil-jump-forward)
 
-  (spaceline-define-segment buffer-id
-    (if (buffer-file-name)
-        (abbreviate-file-name (buffer-file-name))
-      (powerline-buffer-id)))
+  ;; (spaceline-define-segment buffer-id
+  ;;   (if (buffer-file-name)
+  ;;       (abbreviate-file-name (buffer-file-name))
+  ;;     (powerline-buffer-id)))
 
   ;; (defun insert-line-below ()
   ;;   "Insert an empty line below the current line."
