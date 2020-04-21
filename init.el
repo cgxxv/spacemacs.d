@@ -166,6 +166,9 @@ values."
      lua
      vimscript
      rust
+     (plantuml :variables
+              plantuml-jar-path "~/OneDrive/plantuml.jar"
+              org-plantuml-jar-path "~/OneDrive/plantuml.jar")
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -436,6 +439,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
         '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
           ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
           ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
+
+  (setq plantuml-default-exec-mode 'jar)
   )
 
 (defun dotspacemacs/user-config ()
