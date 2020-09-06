@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     nginx
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -79,26 +80,28 @@ values."
      (better-defaults :variables
                       better-defaults-move-to-beginning-of-code-first t
                       better-defaults-move-to-end-of-code-first nil)
+     ;; Tools
+     bm
      ;; (gtags :variables
      ;;        gtags-enable-by-default t)
 
 
-     ;; (ranger :variables
-     ;;         ranger-show-preview t
-     ;;         ;; ranger-enter-with-minus t
-     ;;         ;; ranger-cleanup-on-disable nil
-     ;;         ;; ranger-cleanup-eagerly nil
-     ;;         ;; ranger-show-hidden t
-     ;;         ;; ranger-header-func 'ranger-header-line
-     ;;         ;; ranger-parent-header-func 'ranger-parent-header-line
-     ;;         ;; ranger-parent-depth 2
-     ;;         ;; ranger-width-parents 0.12
-     ;;         ;; ranger-max-parent-width 0.12
-     ;;         ;; ranger-show-literal t
-     ;;         ;; ranger-width-preview 0.55
-     ;;         ranger-ignored-extensions '("mkv" "iso" "mp4")
-     ;;         ;; ranger-max-prefiew-size 10
-     ;;         )
+     (ranger :variables
+             ranger-show-preview t
+             ;; ranger-enter-with-minus t
+             ;; ranger-cleanup-on-disable nil
+             ;; ranger-cleanup-eagerly nil
+             ;; ranger-show-hidden t
+             ;; ranger-header-func 'ranger-header-line
+             ;; ranger-parent-header-func 'ranger-parent-header-line
+             ;; ranger-parent-depth 2
+             ;; ranger-width-parents 0.12
+             ;; ranger-max-parent-width 0.12
+             ;; ranger-show-literal t
+             ;; ranger-width-preview 0.55
+             ranger-ignored-extensions '("mkv" "iso" "mp4")
+             ;; ranger-max-prefiew-size 10
+             )
      git
      ;; semantic
      ;; smex
@@ -151,9 +154,10 @@ values."
             c++-enable-organize-includes-on-save t
             ;; c-c++-enable-clang-support t
             ;; c-c++-enable-clang-format-on-save t
-            c-c++-enable-google-style t
-            c-c++-enable-google-newline t
-            c-c++-adopt-subprojects t)
+            ;; c-c++-enable-google-style t
+            ;; c-c++-enable-google-newline t
+            c-c++-adopt-subprojects t
+            c-basic-offset 2)
      (clojure :variables
               clojure-enable-fancify-symbols t
               clojure-enable-sayid t
@@ -161,7 +165,7 @@ values."
      (sql :variables sql-capitalize-keywords t)
      shell-scripts
      ;; rust
-     ;; javascript
+     javascript
      php
      lua
      vimscript
@@ -485,7 +489,43 @@ you should place your code here."
 
   ;; (evil-leader/set-key "o o" 'insert-line-below)
   ;; (evil-leader/set-key "o O" 'insert-line-above)
+
+  ;; custom tab-width
+  ;; (defun my-setup-indent (n)
+  ;;   ;; java/c/c++
+  ;;   (setq c-basic-offset n)
+  ;;   ;; web development
+  ;;   (setq coffee-tab-width n) ; coffeescript
+  ;;   (setq javascript-indent-level n) ; javascript-mode
+  ;;   (setq js-indent-level n) ; js-mode
+  ;;   (setq js2-basic-offset n) ; js2-mode, in latest js2-mode, it's alias of js-indent-level
+  ;;   (setq web-mode-markup-indent-offset n) ; web-mode, html tag in html file
+  ;;   (setq web-mode-css-indent-offset n) ; web-mode, css in html file
+  ;;   (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
+  ;;   (setq css-indent-offset n) ; css-mode
+  ;;   )
+  ;; (my-setup-indent 2)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (web-beautify tide typescript-mode tern prettier-js nodejs-repl livid-mode skewer-mode js2-refactor js2-mode js-doc import-js grizzl impatient-mode htmlize simple-httpd helm-gtags ggtags counsel-gtags counsel swiper ivy add-node-modules-path ranger bm git-lens nginx-mode go-dlv yasnippet-snippets yapfify yaml-mode ws-butler writeroom-mode winum which-key volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package unfill treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil toml-mode toc-org symon symbol-overlay string-inflection sqlup-mode sql-indent spaceline-all-the-icons solarized-theme smeargle sayid restart-emacs rainbow-delimiters racer pytest pyenv-mode py-isort posframe popwin plantuml-mode pippel pipenv pip-requirements phpunit phpcbf php-extras php-auto-yasnippets pcre2el password-generator paradox org-plus-contrib org-bullets open-junk-file mwim move-text magit-svn magit-section magit-gitflow lsp-ui lsp-python-ms lorem-ipsum live-py-mode link-hint insert-shebang indent-guide importmagic ibuffer-projectile hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-lsp helm-ls-git helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link geben fuzzy font-lock+ flycheck-ycmd flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-golangci-lint flycheck-bashate flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu editorconfig dumb-jump drupal-mode dotenv-mode disaster diminish devdocs define-word dap-mode dactyl-mode cython-mode cpp-auto-include company-ycmd company-statistics company-shell company-rtags company-quickhelp company-phpactor company-php company-lua company-go company-c-headers company-anaconda column-enforce-mode clojure-snippets clj-refactor clean-aindent-mode clang-format cider-eval-sexp-fu centered-cursor-mode ccls cargo blacken auto-yasnippet auto-highlight-symbol aggressive-indent ace-link ace-jump-helm-line ac-ispell))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+)
