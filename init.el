@@ -186,12 +186,14 @@ This function should only modify configuration layer settings."
               clojure-enable-clj-refactor t)
      (sql :variables sql-capitalize-keywords t)
      shell-scripts
-     ;; rust
      javascript
      php
      lua
      vimscript
-     rust
+     (rust :variables
+           rust-backend 'racer
+           lsp-rust-server 'rust-analyzer
+           )
      (plantuml :variables
               plantuml-jar-path "~/OneDrive/plantuml.jar"
               org-plantuml-jar-path "~/OneDrive/plantuml.jar")
@@ -669,20 +671,25 @@ before packages are loaded."
   ;; (evil-leader/set-key "o O" 'insert-line-above)
 
   ;; custom tab-width
-  ;; (defun my-setup-indent (n)
-  ;;   ;; java/c/c++
-  ;;   (setq c-basic-offset n)
-  ;;   ;; web development
-  ;;   (setq coffee-tab-width n) ; coffeescript
-  ;;   (setq javascript-indent-level n) ; javascript-mode
-  ;;   (setq js-indent-level n) ; js-mode
-  ;;   (setq js2-basic-offset n) ; js2-mode, in latest js2-mode, it's alias of js-indent-level
-  ;;   (setq web-mode-markup-indent-offset n) ; web-mode, html tag in html file
-  ;;   (setq web-mode-css-indent-offset n) ; web-mode, css in html file
-  ;;   (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
-  ;;   (setq css-indent-offset n) ; css-mode
-  ;;   )
-  ;; (my-setup-indent 2)
+  (defun my-setup-indent (n)
+    ;; ;; java/c/c++
+    ;; (setq c-basic-offset n)
+    ;; ;; web development
+    ;; (setq coffee-tab-width n) ; coffeescript
+    ;; (setq javascript-indent-level n) ; javascript-mode
+    ;; (setq js-indent-level n) ; js-mode
+    ;; (setq js2-basic-offset n) ; js2-mode, in latest js2-mode, it's alias of js-indent-level
+    ;; (setq web-mode-markup-indent-offset n) ; web-mode, html tag in html file
+    ;; (setq web-mode-css-indent-offset n) ; web-mode, css in html file
+    ;; (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
+    ;; (setq css-indent-offset n) ; css-mode
+
+    ;; rust
+    ;; (setq indent-tabs-mode nil)
+    (setq tab-width n)
+    (setq rust-indent-offset n)
+    )
+  (my-setup-indent 2)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
