@@ -139,9 +139,6 @@ This function should only modify configuration layer settings."
      imenu-list
      (ibuffer :variables ibuffer-group-buffers-by 'projects)
 
-     ;; dap
-     ;; (lsp :variables lsp-rust-server 'rust-analyzer)
-
      ;; (shell :variables
      ;;        shell-default-shell 'eshell
      ;;        shell-default-position 'bottom
@@ -164,11 +161,11 @@ This function should only modify configuration layer settings."
              python-sort-imports-on-save t)
      (go :variables
          go-tab-width 2
+         go-format-before-save t
          gofmt-command "goimports"
          go-use-golangci-lint t
          go-use-test-args "-race -timeout 10s"
-         godoc-at-point-function 'godoc-gogetdoc
-         ;; go-backend 'lsp
+         go-backend 'lsp
          )
      (c-c++ :variables
             c-c++-adopt-subprojects t
@@ -671,6 +668,7 @@ before packages are loaded."
 
   ;; (evil-leader/set-key "o o" 'insert-line-below)
   ;; (evil-leader/set-key "o O" 'insert-line-above)
+  (setq indent-tabs-mode t)
 
   ;; custom tab-width
   (defun my-setup-indent (n)
@@ -686,10 +684,11 @@ before packages are loaded."
     ;; (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
     ;; (setq css-indent-offset n) ; css-mode
 
-    ;; rust
-    ;; (setq indent-tabs-mode nil)
     (setq tab-width n)
-    (setq rust-indent-offset n)
+
+    ;; rust
+    (setq indent-tabs-mode t)
+    (setq rust-indent-offset 4)
     )
   (my-setup-indent 2)
   )
