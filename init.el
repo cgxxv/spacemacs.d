@@ -32,7 +32,8 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(ruby
+   '(html
+     ruby
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -54,6 +55,7 @@ This function should only modify configuration layer settings."
      ;; syntax-checking
      ;; version-control
      treemacs
+     tabs
 
      nginx
      ;; ----------------------------------------------------------------
@@ -196,6 +198,8 @@ This function should only modify configuration layer settings."
               org-plantuml-jar-path "~/OneDrive/plantuml.jar")
      (docker :variables
              docker-dockerfile-backend 'lsp)
+
+     theming
      )
 
    ;; List of additional packages that will be installed without being
@@ -336,9 +340,11 @@ It should only modify the values of Spacemacs settings."
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         ;; spacemacs-dark
-                         ;; spacemacs-light
-                         solarized-dark-high-contrast
+                         ;;spacemacs-dark
+                         ;;spacemacs-light
+                         ;;solarized-dark-high-contrast
+                         solarized-dark
+                         ;;sanityinc-solarized-dark
                          )
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
@@ -355,8 +361,8 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-colorize-cursor-according-to-state t
 
    ;; Default font or prioritized list of fonts.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 10.0
+   dotspacemacs-default-font '("Hack Nerd Font Mono"
+                               :size 16.0
                                :weight normal
                                :width normal)
 
@@ -617,6 +623,9 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
           ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
 
   (setq plantuml-default-exec-mode 'jar)
+
+  (setq theming-modifications
+        '((solarized-dark :background nil)))
   )
 
 (defun dotspacemacs/user-load ()
@@ -705,8 +714,10 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol nil)
+ '(highlight-parentheses-colors '("#3cafa5" "#c49619" "#3c98e0" "#7a7ed2" "#93a61a"))
  '(package-selected-packages
-   '(tern cheat-sh yasnippet-snippets yapfify yaml-mode ws-butler writeroom-mode winum which-key web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package unfill treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil toml-mode toc-org symon symbol-overlay string-inflection sqlup-mode sql-indent spaceline-all-the-icons solarized-theme smeargle seeing-is-believing sayid rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe restart-emacs rbenv ranger rake rainbow-delimiters racer pytest pyenv-mode py-isort prettier-js popwin plantuml-mode pippel pipenv pip-requirements phpunit phpcbf php-extras php-auto-yasnippets password-generator paradox overseer org-plus-contrib org-bullets open-junk-file nodejs-repl nginx-mode nameless mwim move-text minitest magit-svn magit-section magit-gitflow macrostep lsp-ui lsp-python-ms lorem-ipsum livid-mode live-py-mode link-hint json-navigator js2-refactor js-doc insert-shebang indent-guide importmagic ibuffer-projectile hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-lsp helm-ls-git helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link geben fuzzy font-lock+ flycheck-ycmd flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-package flycheck-golangci-lint flycheck-elsa flycheck-bashate flx-ido fish-mode fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu emr elisp-slime-nav editorconfig dumb-jump drupal-mode dotenv-mode dockerfile-mode docker disaster diminish devdocs define-word dap-mode dactyl-mode cython-mode cpp-auto-include company-ycmd company-statistics company-shell company-rtags company-quickhelp company-phpactor company-php company-lua company-go company-c-headers company-anaconda column-enforce-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu chruby centered-cursor-mode ccls cargo bundler bm blacken auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line ac-ispell)))
+   '(centaur-tabs web-mode tagedit slim-mode scss-mode sass-mode pug-mode impatient-mode htmlize helm-css-scss haml-mode emmet-mode counsel-css counsel swiper ivy company-web web-completion-data add-node-modules-path tern cheat-sh yasnippet-snippets yapfify yaml-mode ws-butler writeroom-mode winum which-key web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package unfill treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil toml-mode toc-org symon symbol-overlay string-inflection sqlup-mode sql-indent spaceline-all-the-icons solarized-theme smeargle seeing-is-believing sayid rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe restart-emacs rbenv ranger rake rainbow-delimiters racer pytest pyenv-mode py-isort prettier-js popwin plantuml-mode pippel pipenv pip-requirements phpunit phpcbf php-extras php-auto-yasnippets password-generator paradox overseer org-plus-contrib org-bullets open-junk-file nodejs-repl nginx-mode nameless mwim move-text minitest magit-svn magit-section magit-gitflow macrostep lsp-ui lsp-python-ms lorem-ipsum livid-mode live-py-mode link-hint json-navigator js2-refactor js-doc insert-shebang indent-guide importmagic ibuffer-projectile hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-lsp helm-ls-git helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link geben fuzzy font-lock+ flycheck-ycmd flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-package flycheck-golangci-lint flycheck-elsa flycheck-bashate flx-ido fish-mode fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu emr elisp-slime-nav editorconfig dumb-jump drupal-mode dotenv-mode dockerfile-mode docker disaster diminish devdocs define-word dap-mode dactyl-mode cython-mode cpp-auto-include company-ycmd company-statistics company-shell company-rtags company-quickhelp company-phpactor company-php company-lua company-go company-c-headers company-anaconda column-enforce-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu chruby centered-cursor-mode ccls cargo bundler bm blacken auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line ac-ispell)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
