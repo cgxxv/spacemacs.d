@@ -44,7 +44,6 @@ This function should only modify configuration layer settings."
      emacs-lisp
      ;; git
      helm
-     ;; lsp
      ;; markdown
      multiple-cursors
      ;; org
@@ -153,6 +152,9 @@ This function should only modify configuration layer settings."
      ;;        shell-protect-eshell-prompt nil
      ;;        close-window-with-terminal t)
 
+     '(lsp :variables lsp-rust-server 'rust-analyzer
+           cargo-process-reload-on-modify t)
+
      yaml
      (python :variables
              python-backend 'lsp
@@ -190,7 +192,7 @@ This function should only modify configuration layer settings."
      lua
      vimscript
      (rust :variables
-           rust-backend 'racer
+           ;;rust-backend 'racer
            rust-format-on-save t
            )
      (plantuml :variables
@@ -623,9 +625,6 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
           ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
 
   (setq plantuml-default-exec-mode 'jar)
-
-  (setq theming-modifications
-        '((solarized-dark :background nil)))
   )
 
 (defun dotspacemacs/user-load ()
@@ -655,6 +654,12 @@ before packages are loaded."
 
   (evil-leader/set-key "o b" 'evil-jump-backward)
   (evil-leader/set-key "o f" 'evil-jump-forward)
+
+  ;(global-set-key (kbd "C-S-[")  'spacemacs/tabs-backward)
+  ;(global-set-key (kbd "C-S-]") 'spacemacs/tabs-forward)
+
+  (global-set-key (kbd "<C-S-right>") 'next-buffer)
+  (global-set-key (kbd "<C-S-left>") 'previous-buffer)
 
   ;; (spaceline-define-segment buffer-id
   ;;   (if (buffer-file-name)
